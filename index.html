@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed TikTok Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 97%;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 10;
+            pointer-events: all;
+        }
+        .video-container {
+            position: relative;
+            z-index: 1;
+        }
+        .view-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <!-- Mã nhúng TikTok -->
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@frypinkisbella/video/7445301959025790209" data-video-id="7445301959025790209" style="max-width: 605px;min-width: 325px;" allowfullscreen>
+            <section>
+                <a target="_blank" title="TÊN NGƯỚI DÙNG" href="LINK_PROFILE">TÊN NGƯỚI DÙNG</a>
+                <p></p>
+                <a target="_blank" title="\u266c TÊN NHẠC" href="LINK_NHÊC">\u266c TÊN NHẠC</a>
+            </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+        <div class="view-counter" id="view-counter">Lượt xem: 0</div>
+    </div>
+    <!-- Overlay che phủ hoàn toàn -->
+    <div class="overlay" id="overlay">⚠️ Video đang bị che</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const viewCounter = document.getElementById("view-counter");
+            let viewCount = parseInt(localStorage.getItem("videoViewCount")) || 0;
+            viewCount++;
+            localStorage.setItem("videoViewCount", viewCount);
+            viewCounter.textContent = `Lượt xem: ${viewCount}`;
+        });
+    </script>
+</body>
+</html>
